@@ -3,6 +3,8 @@ import fs from 'fs';
 import React from 'react';
 import matter from 'gray-matter';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface ProjectsProps {
     projects: Array<Project>
@@ -13,7 +15,23 @@ function Projects({ projects }: ProjectsProps) {
         <div>
             {projects.map((project) => (
                 <article key={project.data.title}>
-                    <h2>{project.data.title}</h2>
+                    <Link href={`/projects/${project.slug}`}>
+                        <div>
+                            {project.data.tags.map((tag) => (
+                                <span key={tag}>{tag}</span>
+                            ))}
+                        </div>
+                        <div className="relative w-56 h-56">
+                            <Image
+                                src={`/images/${project.data.featuredimage}`}
+                                alt={project.data.title}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                        <h2>{project.data.title}</h2>
+                        <p>{project.data.description}</p>
+                    </Link>
                 </article>
             ))}
         </div>
@@ -34,6 +52,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
             content,
         };
     });
+
+    projects.sort((a, b) => (a.data.order - b.data.order));
 
     return {
         props: {

@@ -2,8 +2,10 @@
 title: Archiphos
 link: http://archiphos.com/
 gallery: 
-  - archiphos-home.jpg
-  - archiphos-page.jpg
+  - filename: archiphos-home.jpg
+    caption: Homepage
+  - filename: archiphos-page.jpg
+    caption: Project page
 featuredimage: archiphos-home.jpg
 tags:
   - design

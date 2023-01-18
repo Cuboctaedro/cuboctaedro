@@ -1,10 +1,14 @@
 ---
 title: Ioannis Kapodistrias
 gallery: 
-  - kapodistrias-poster.jpg
-  - kapodistrias-3.jpg
-  - kapodistrias-11.jpg
-  - kapodistrias-2-10.jpg
+  - filename: kapodistrias-poster.jpg
+    caption: Poster and flyer
+  - filename: kapodistrias-2-10.jpg
+    caption: Exhibition panels
+  - filename: kapodistrias-3.jpg
+    caption: Panel composition
+  - filename: kapodistrias-11.jpg
+    caption: Panel composition
 featuredimage: kapodistrias-poster.jpg
 tags:
   - design

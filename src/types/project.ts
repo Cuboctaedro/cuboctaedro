@@ -4,7 +4,7 @@ export interface Project {
     data: {
         title: string
         link?: string
-        gallery: Array<string>
+        gallery: Array<{ filename: string, caption: string }>
         featuredimage: string
         tags: Array<'desing' | 'development'>
         description: string
