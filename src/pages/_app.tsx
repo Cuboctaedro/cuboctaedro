@@ -1,19 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import '@/styles/globals.css';
 import React from 'react';
 import type { AppProps } from 'next/app';
-import { Space_Grotesk } from '@next/font/google';
-
-const spaceGrotesk = Space_Grotesk({
-    subsets: ['latin'],
-    variable: '--font-space',
-});
+import '@/styles/globals.css';
+import franklin from '@/fonts/franklin';
+import SiteHeader from '@/components/header';
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <div className={`${spaceGrotesk.variable} font-sans`}>
-            <Component {...pageProps} />
+        <div className={`${franklin.variable} font-sans text-base leading-6 text-neutral-800`}>
+            <div className="container mx-auto">
+                <header className="pb-16">
+                    <SiteHeader />
+                </header>
+                <Component {...pageProps} />
+            </div>
         </div>
-
     );
 }

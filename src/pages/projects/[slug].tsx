@@ -5,6 +5,7 @@ import React from 'react';
 import matter from 'gray-matter';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Head from 'next/head';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import MarkdownIt from 'markdown-it';
 
@@ -13,21 +14,26 @@ const md = new MarkdownIt();
 function ProjectPage({ data, content }: Project) {
     return (
         <>
-            <h1>{data.title}</h1>
-            <p>{data.description}</p>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <Head>
+                <title>{`${data.title} - Dimitris Kottas`}</title>
+                <meta name="description" content={`${data.description} - Project by Dimitris Kottas`} />
+            </Head>
             <div>
-                {data.gallery.map((picture) => (
-                    <figure key={picture.filename} className="relative w-96 h-96">
-                        <Image
-                            src={`/images/${picture.filename}`}
-                            alt={picture.caption}
-                            fill
-                            className="w-full object-contain"
-                        />
-                        <figcaption className="h-8">{picture.caption}</figcaption>
-                    </figure>
-                ))}
+                <h1>{data.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+                <div>
+                    {data.gallery.map((picture) => (
+                        <figure key={picture.filename} className="relative w-96 h-96">
+                            <Image
+                                src={`/images/${picture.filename}`}
+                                alt={picture.caption}
+                                fill
+                                className="w-full object-contain"
+                            />
+                            <figcaption className="h-8">{picture.caption}</figcaption>
+                        </figure>
+                    ))}
+                </div>
             </div>
         </>
     );

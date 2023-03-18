@@ -15,5 +15,6 @@
     "react/jsx-indent-props": ["warn", 4],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn"
-  }
+  },
+  "ignorePatterns": ["*.js"]
 }

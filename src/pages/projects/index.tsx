@@ -3,8 +3,8 @@ import fs from 'fs';
 import React from 'react';
 import matter from 'gray-matter';
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
+import Head from 'next/head';
+import ProjectCard from '@/components/project-card';
 
 interface ProjectsProps {
     projects: Array<Project>
@@ -12,29 +12,18 @@ interface ProjectsProps {
 
 function Projects({ projects }: ProjectsProps) {
     return (
-        <div>
-            {projects.map((project) => (
-                <article key={project.data.title}>
-                    <Link href={`/projects/${project.slug}`}>
-                        <div>
-                            {project.data.tags.map((tag) => (
-                                <span key={tag}>{tag}</span>
-                            ))}
-                        </div>
-                        <div className="relative w-56 h-56">
-                            <Image
-                                src={`/images/${project.data.featuredimage}`}
-                                alt={project.data.title}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <h2>{project.data.title}</h2>
-                        <p>{project.data.description}</p>
-                    </Link>
-                </article>
-            ))}
-        </div>
+        <>
+            <Head>
+                <title>Projects - Dimitris Kottas</title>
+                <meta name="description" content="Web development and graphic design projects by Dimitris Kottas" />
+            </Head>
+            <div className="grid w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">
+                {projects.map((project) => (
+                    <ProjectCard key={project.data.title} project={project} />
+                ))}
+            </div>
+
+        </>
     );
 }
 
