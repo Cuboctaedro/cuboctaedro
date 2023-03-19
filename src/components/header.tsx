@@ -7,7 +7,7 @@ function SiteHeader() {
 
     return (
         <nav className="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto flex pt-2 flex-wrap">
-            <div className="w-container-1 flex-none">
+            <div className="w-container-1 flex-none px-4">
                 {router.pathname === '/' && (
                     <h1 className="font-bold">Dimitris Kottas</h1>
                 )}
@@ -15,18 +15,18 @@ function SiteHeader() {
                     <Link href="/" className="font-bold text-neutral-800 hover:text-neutral-500 transition-colors">Dimitris Kottas</Link>
                 )}
             </div>
-            <ul className="w-container-1 lg:w-container-2 xl:w-container-3 flex items-center justify-start lg:justify-end gap-6 flex-none">
-                <li className={`border-solid border-neutral-800 ${router.pathname === '/projects' ? 'border-b' : ''}`}>
-                    <Link href="/projects" className="text-neutral-800 hover:text-neutral-500 transition-colors">Projects</Link>
+            <ul className="w-container-1 lg:w-container-2 xl:w-container-3 flex items-center justify-start lg:justify-end gap-6 flex-none px-4">
+                <li>
+                    <Link href="/projects" className={`hover:text-red-700 transition-colors ${router.pathname.includes('/projects') ? 'text-black' : 'text-neutral-700'}`}>projects</Link>
                 </li>
-                <li className={`border-solid border-neutral-800 ${router.pathname === '/blog' ? 'border-b' : ''}`}>
-                    <Link href="/blog" className="text-neutral-800 hover:text-neutral-500 transition-colors">Blog</Link>
+                <li>
+                    <Link href="/blog" className={`hover:text-red-700 transition-colors ${router.pathname.includes('/blog') ? 'text-black' : 'text-neutral-700'}`}>blog</Link>
                 </li>
-                <li className={`border-solid border-neutral-800 ${router.pathname === '/about' ? 'border-b' : ''}`}>
-                    <Link href="/about" className="text-neutral-800 hover:text-neutral-500 transition-colors">About</Link>
+                <li>
+                    <Link href="/about" className={`hover:text-red-700 transition-colors ${router.pathname.includes('/about') ? 'text-black' : 'text-neutral-700'}`}>about</Link>
                 </li>
-                <li className={`border-solid border-neutral-800 ${router.pathname === '/contact' ? 'border-b' : ''}`}>
-                    <Link href="/contact" className="text-neutral-800 hover:text-neutral-500 transition-colors">Contact</Link>
+                <li>
+                    <Link href="/contact" className={`hover:text-red-700 transition-colors ${router.pathname.includes('/contact') ? 'text-black' : 'text-neutral-700'}`}>contact</Link>
                 </li>
             </ul>
         </nav>

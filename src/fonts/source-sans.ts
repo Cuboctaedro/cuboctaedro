@@ -1,6 +1,6 @@
-import { Source_Sans_Pro } from '@next/font/google';
+import { Source_Sans_3 } from '@next/font/google';
 
-const sourceSans = Source_Sans_Pro({
+const sourceSans = Source_Sans_3({
     subsets: ['latin'],
     variable: '--font-sourcesans',
     weight: ['200', '400', '700'],

@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import ProjectCard from '@/components/project-card';
+import Heading from '@/components/heading';
 
 interface ProjectsProps {
     projects: Array<Project>
@@ -17,11 +18,14 @@ function Projects({ projects }: ProjectsProps) {
                 <title>Projects - Dimitris Kottas</title>
                 <meta name="description" content="Web development and graphic design projects by Dimitris Kottas" />
             </Head>
-            <div className="grid w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">
-                {projects.map((project) => (
-                    <ProjectCard key={project.data.title} project={project} />
-                ))}
-            </div>
+            <section className="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
+                <Heading title="Projects" />
+                <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
+                    {projects.map((project) => (
+                        <ProjectCard key={project.data.title} project={project} />
+                    ))}
+                </div>
+            </section>
 
         </>
     );

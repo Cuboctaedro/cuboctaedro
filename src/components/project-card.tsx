@@ -22,7 +22,7 @@ function ProjectCard({
                     />
                 </div>
                 <h2 className="font-bold pt-2">{project.data.title}</h2>
-                <p className="text-sm">{project.data.description}</p>
+                <p className="">{project.data.description}</p>
             </Link>
         </article>
     );

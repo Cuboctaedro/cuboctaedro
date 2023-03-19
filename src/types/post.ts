@@ -4,5 +4,6 @@ export interface Post {
     data: {
         title: string
         date: Date
+        description: string
     }
 }

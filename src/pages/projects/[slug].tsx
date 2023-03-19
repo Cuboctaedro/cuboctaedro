@@ -8,6 +8,8 @@ import Image from 'next/image';
 import Head from 'next/head';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import MarkdownIt from 'markdown-it';
+import Heading from '@/components/heading';
+import Link from 'next/link';
 
 const md = new MarkdownIt();
 
@@ -18,23 +20,31 @@ function ProjectPage({ data, content }: Project) {
                 <title>{`${data.title} - Dimitris Kottas`}</title>
                 <meta name="description" content={`${data.description} - Project by Dimitris Kottas`} />
             </Head>
-            <div>
-                <h1>{data.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: content }} />
-                <div>
-                    {data.gallery.map((picture) => (
-                        <figure key={picture.filename} className="relative w-96 h-96">
-                            <Image
-                                src={`/images/${picture.filename}`}
-                                alt={picture.caption}
-                                fill
-                                className="w-full object-contain"
-                            />
-                            <figcaption className="h-8">{picture.caption}</figcaption>
-                        </figure>
-                    ))}
+            <article className="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4 ">
+                <Heading title={data.title} />
+                <div className="flex flex-wrap gap-8 pt-8">
+                    <div className="w-column-1">
+                        <div className="generated" dangerouslySetInnerHTML={{ __html: content }} />
+                        {typeof data.link !== 'undefined' && (
+                            <Link href={data.link} target="_blank" className="mt-8 px-8 py-4 inline-flex items-center justify-center bg-neutral-800 text-white hover:bg-red-700 transition-colors uppercase tracking-wide text-sm">Visit the website</Link>
+                        )}
+                    </div>
+
+                    <div className="w-column-1 lg:w-column-2 xl:w-column-3">
+                        {data.gallery.map((picture) => (
+                            <figure key={picture.filename} className="relative w-column-1 lg:w-column-2 xl:w-column-3 h-column-1 lg:h-column-2 xl:h-column-3 mb-8">
+                                <Image
+                                    src={`/images/${picture.filename}`}
+                                    alt={picture.caption}
+                                    fill
+                                    className="w-full object-contain"
+                                />
+                                <figcaption className="h-8">{picture.caption}</figcaption>
+                            </figure>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </article>
         </>
     );
 }
